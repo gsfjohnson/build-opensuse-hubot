@@ -1,0 +1,16 @@
+[Unit]
+Description=A simple helpful robot for your Company
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/npm start
+WorkingDirectory=/usr/lib/hubot
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=hubot
+User=hubot
+Group=hubot
+
+[Install]
+WantedBy=multi-user.target
