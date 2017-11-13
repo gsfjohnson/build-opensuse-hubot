@@ -15,6 +15,7 @@ BuildRoot: %{buildroot}
 Requires: nodejs
 %{?el6:Requires: npm}
 BuildRequires: nodejs
+%{?el6:BuildRequires: npm}
 AutoReqProv: no
 
 %description
