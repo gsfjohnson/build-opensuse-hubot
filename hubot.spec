@@ -1,4 +1,4 @@
-%define name hubot
+%define name nodejs-hubot
 %define version 3.0.1
 %define release 1
 %define buildroot %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
