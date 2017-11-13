@@ -1,8 +1,8 @@
-%define name hubot
+%define realname hubot
 %define pkg_name nodejs-hubot
 %define version 3.0.1
 %define release 1
-%define buildroot %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+%define buildroot %(mktemp -ud %{_tmppath}/%{realname}-%{version}-%{release}-XXXXXX)
 
 Name: %{pkg_name}
 Version: %{version}
@@ -11,7 +11,7 @@ Summary: hubot
 
 Group: Installation Script
 License: MIT
-Source: %{name}-%{version}.tar.bz2
+Source: %{realname}-%{version}.tar.bz2
 Source100: hubot.initd
 BuildRoot: %{buildroot}
 Requires: nodejs
@@ -24,7 +24,7 @@ AutoReqProv: no
 A simple helpful robot for your Company
 
 %prep
-%setup -q -c -n %{name}-%{version}
+%setup -q -c -n %{realname}-%{version}
 
 %build
 npm prune --production
