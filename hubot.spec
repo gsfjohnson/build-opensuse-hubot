@@ -13,6 +13,7 @@ License: MIT
 Source: https://github.com/hubotio/hubot/archive/v%{version}.tar.gz
 BuildRoot: %{buildroot}
 Requires: nodejs
+%{?el6:Requires: npm}
 BuildRequires: nodejs
 AutoReqProv: no
 
