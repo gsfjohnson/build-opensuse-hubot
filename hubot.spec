@@ -11,6 +11,7 @@ Summary: hubot
 Group: Installation Script
 License: MIT
 Source: https://github.com/hubotio/hubot/archive/v%{version}.tar.gz
+Source100: hubot.initd
 BuildRoot: %{buildroot}
 Requires: nodejs
 %{?el6:Requires: npm}
@@ -34,11 +35,17 @@ getent passwd hubot >/dev/null || useradd -r -g hubot -G hubot -d / -s /sbin/nol
 
 %install
 mkdir -p %{buildroot}/usr/lib/hubot
-cp -r ./ %{buildroot}/usr/lib/hubot
+cp -rv ./ %{buildroot}/usr/lib/hubot
 mkdir -p %{buildroot}/var/log/hubot
 
+%if 0%{?el6}
+install -D -m 755 %{SOURCE100} $RPM_BUILD_ROOT/%{initddir}/hubot
+%endif
+
+%if 0%{?el7}
 %post
 systemctl enable /usr/lib/hubot/hubot.service
+%endif
 
 %clean
 rm -rf %{buildroot}
