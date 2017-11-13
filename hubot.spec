@@ -25,7 +25,7 @@ A simple helpful robot for your Company
 %setup -q -c -n %{name}
 
 %build
-npm prune --production
+npm install --production
 npm rebuild
 
 %pre
