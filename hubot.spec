@@ -40,7 +40,7 @@ cp -rv ./ %{buildroot}/usr/lib/hubot
 mkdir -p %{buildroot}/var/log/hubot
 
 %if 0%{?el6}
-install -D -m 755 %{SOURCE100} $RPM_BUILD_ROOT/%{initddir}/hubot
+install -D -m 755 %{SOURCE100} $RPM_BUILD_ROOT/%{_initddir}/hubot
 %endif
 
 %if 0%{?el7}
@@ -55,3 +55,6 @@ rm -rf %{buildroot}
 %defattr(644, hubot, hubot, 755)
 /usr/lib/hubot
 /var/log/hubot
+%if 0%{?el6}
+/%{_initddir}/hubot
+%endif
