@@ -1,4 +1,5 @@
 %define realname hubot
+%define node_modules /usr/lib/node_modules/%{realname}
 %define pkg_name nodejs-hubot
 %define version 3.0.1
 %define release 1
@@ -36,7 +37,9 @@ getent passwd hubot >/dev/null || useradd -r -g hubot -G hubot -d / -s /sbin/nol
 
 %install
 mkdir -p %{buildroot}/usr/lib/hubot
-cp -rv %{realname}-%{version}/ %{buildroot}/usr/lib/hubot
+install -D -m 755 %{realname}-%{version}/index.js %{buildroot}%{node_modules}/index.js
+install -D -m 755 %{realname}-%{version}/src/ %{buildroot}%{node_modules}/src
+#cp -rv %{realname}-%{version}/index.js %{buildroot}/usr/lib/hubot
 mkdir -p %{buildroot}/var/log/hubot
 
 %if 0%{?el6}
@@ -53,7 +56,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(644, hubot, hubot, 755)
-/usr/lib/hubot
+%{node_modules}
 /var/log/hubot
 %if 0%{?el6}
 /%{_initddir}/hubot
