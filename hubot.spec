@@ -38,9 +38,10 @@ getent passwd hubot >/dev/null || useradd -r -g hubot -G hubot -d / -s /sbin/nol
 %install
 mkdir -p %{buildroot}/usr/lib/hubot
 install -D -m 755 %{realname}-%{version}/index.js %{buildroot}%{node_modules}/index.js
-install -D -m 755 %{realname}-%{version}/src/ %{buildroot}%{node_modules}/src
-#cp -rv %{realname}-%{version}/index.js %{buildroot}/usr/lib/hubot
-mkdir -p %{buildroot}/var/log/hubot
+install -d %{buildroot}%{node_modules}/src
+cp -v %{realname}-%{version}/src/* %{buildroot}%{node_modules}/src/
+#mkdir -p %{buildroot}/var/log/hubot
+install -d %{buildroot}/var/log/hubot
 
 %if 0%{?el6}
 install -D -m 755 %{SOURCE100} $RPM_BUILD_ROOT/%{_initddir}/hubot
