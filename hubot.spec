@@ -36,7 +36,7 @@ getent passwd hubot >/dev/null || useradd -r -g hubot -G hubot -d / -s /sbin/nol
 
 %install
 mkdir -p %{buildroot}/usr/lib/hubot
-cp -rv ./ %{buildroot}/usr/lib/hubot
+cp -rv %{realname}-%{version}/ %{buildroot}/usr/lib/hubot
 mkdir -p %{buildroot}/var/log/hubot
 
 %if 0%{?el6}
